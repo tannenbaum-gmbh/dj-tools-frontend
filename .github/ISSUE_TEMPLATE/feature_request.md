@@ -3,7 +3,7 @@ name: 🚀 Feature Request
 about: Suggest a new feature or enhancement for the DJ tools platform
 title: '[FEATURE] '
 labels: ['enhancement', 'feature']
-assignees: ''
+assignees: []
 ---
 
 ## 🎯 Feature Description
