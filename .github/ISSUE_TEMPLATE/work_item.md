@@ -3,7 +3,7 @@ name: 📋 Work Item
 about: Create a work item or sub-task for feature implementation
 title: '[WORK] '
 labels: ['work-item', 'task']
-assignees: ''
+assignees: []
 ---
 
 ## 📋 Work Item Details
