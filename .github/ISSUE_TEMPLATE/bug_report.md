@@ -3,7 +3,7 @@ name: 🐛 Bug Report
 about: Report a bug or issue with the DJ tools platform
 title: '[BUG] '
 labels: ['bug', 'needs-triage']
-assignees: ''
+assignees: []
 ---
 
 ## 🐛 Bug Description
