@@ -21,19 +21,19 @@ export default function RootLayout({
               <div className="p-4">
                 <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
                 <nav className="space-y-1">
-                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700">
+                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 focus:bg-green-100 focus:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     File issues from screenshots
                   </a>
-                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700">
+                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 focus:bg-green-100 focus:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Product browsing
                   </a>
-                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700">
+                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 focus:bg-green-100 focus:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Mobile navigation
                   </a>
-                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700">
+                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 focus:bg-green-100 focus:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Search functionality
                   </a>
-                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700">
+                  <a href="#" className="block px-3 py-2 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 focus:bg-green-100 focus:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     User profile
                   </a>
                 </nav>
