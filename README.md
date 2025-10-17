@@ -69,10 +69,52 @@ This repository contains various types of issues that demonstrate GitHub Project
 
 ## Getting Started
 
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
+- Git
+
+### Installation
+
 1. Clone the repository
-2. Install dependencies: `npm install`
+   ```bash
+   git clone https://github.com/tannenbaum-gmbh/dj-tools-frontend.git
+   cd dj-tools-frontend
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
 3. Set up environment variables
-4. Run development server: `npm run dev`
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your configuration
+   ```
+
+4. Run development server
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run test` - Run tests
+- `npm run lint` - Run linter
+
+## Contributing
+
+We welcome contributions! Please see our contributing guidelines and code of conduct.
+
+## License
+
+This project is licensed under the terms specified in the LICENSE file.
 
 ---
 
