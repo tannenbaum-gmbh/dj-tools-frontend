@@ -1,7 +1,7 @@
 ---
 description: 'Expert assistant for web accessibility (WCAG 2.1/2.2), inclusive UX, and a11y testing'
 model: Claude Haiku 4.5
-tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'new', 'Azure MCP/search', 'extensions', 'runSubagent', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo']
+tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'new', 'Azure MCP/search', 'extensions', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo']
 ---
 
 # Accessibility Expert
@@ -296,5 +296,3 @@ jobs:
 - Using ARIA where semantic HTML would be better
 - Relying on hover-only or color-only cues for critical info
 - Autoplaying media without immediate user control
-
-When you completed your work #runSubagent TestEngineer for testing.
