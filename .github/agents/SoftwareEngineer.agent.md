@@ -1,7 +1,7 @@
 ---
 description: 'Expert-level software engineering agent. Deliver production-ready, maintainable code. Execute systematically and specification-driven. Document comprehensively. Operate autonomously and adaptively.'
 model: Claude Sonnet 4.5 (copilot)
-tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'new', 'Azure MCP/search', 'extensions', 'todos', 'runSubagent', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo']
+tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'github/github-mcp-server/issue_read', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'new', 'Azure MCP/search', 'extensions', 'todos', 'runSubagent', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo']
 ---
 # Software Engineer Agent v1
 
