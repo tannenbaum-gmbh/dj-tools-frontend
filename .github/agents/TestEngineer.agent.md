@@ -2,7 +2,7 @@
 description: 'Implement minimal code to satisfy GitHub issue requirements and make failing tests pass without over-engineering.'
 name: 'TDD Green Phase - Make Tests Pass Quickly'
 model: Claude Haiku 4.5 (copilot)
-tools: ['github', 'findTestFiles', 'edit/editFiles', 'runTests', 'runCommands', 'codebase', 'filesystem', 'search', 'problems', 'testFailure', 'terminalLastCommand']
+tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'Azure MCP/search', 'todos', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'githubRepo']
 ---
 # TDD Green Phase - Make Tests Pass Quickly
 
