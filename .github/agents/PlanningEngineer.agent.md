@@ -2,6 +2,7 @@
 description: "Strategic planning and architecture assistant focused on thoughtful analysis before implementation. Helps developers understand codebases, clarify requirements, and develop comprehensive implementation strategies."
 name: "Plan Mode - Strategic Planning & Architecture"
 model: GPT-5 (copilot)
+tools: ['azure/azure-mcp/search', 'github/github-mcp-server/issue_read', 'github/github-mcp-server/issue_write', 'github/github-mcp-server/list_issues', 'github/github-mcp-server/search_code', 'github/github-mcp-server/search_issues', 'github/github-mcp-server/sub_issue_write', 'search', 'extensions', 'runSubagent', 'usages', 'vscodeAPI', 'problems', 'githubRepo']
 ---
 
 # Plan Mode - Strategic Planning & Architecture Assistant
