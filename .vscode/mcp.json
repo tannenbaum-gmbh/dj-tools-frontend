@@ -16,8 +16,8 @@
 	},
 	"inputs": [
     {
-      "id": "ado_org",
-      "type": "promptString",
-      "description": "Azure DevOps organization name  (e.g. 'contoso')"
+		"id": "ado_org",
+		"type": "promptString",
+		"description": "Azure DevOps organization name  (e.g. 'contoso')"
     } ]
 }
