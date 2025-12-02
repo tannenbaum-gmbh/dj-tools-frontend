@@ -1,9 +1,23 @@
 {
 	"servers": {
-		"msft-flow-soft-atlassian": {
+		"atlassian": {
 			"url": "https://mcp.atlassian.com/v1/sse",
 			"type": "http"
+		},
+		"azure-devops": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "@azure-devops/mcp", "${input:ado_org}"]
+		},
+		"github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/"
 		}
 	},
-	"inputs": []
+	"inputs": [
+    {
+      "id": "ado_org",
+      "type": "promptString",
+      "description": "Azure DevOps organization name  (e.g. 'contoso')"
+    } ]
 }
