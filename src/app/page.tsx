@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { MOCK_PRODUCTS } from "@/lib/mockData";
+import { ProductCard } from "@/components/ProductCard";
 
 export default function Home() {
   return (
@@ -53,6 +55,16 @@ export default function Home() {
             <p className="text-purple-200">
               Smart suggestions tailored to your DJ style and preferences.
             </p>
+          </div>
+        </div>
+
+        {/* Featured Products */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">Featured Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {MOCK_PRODUCTS.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
 
