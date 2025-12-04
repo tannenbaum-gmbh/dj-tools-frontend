@@ -23,17 +23,26 @@ const WishlistContext = createContext<WishlistContextType | undefined>(undefined
 
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {
   const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+  const [lastNotified, setLastNotified] = useState<Record<string, number>>({});
   const { addAlert } = useAlert();
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('dj-tools-wishlist');
+    const savedNotified = localStorage.getItem('dj-tools-last-notified');
     if (saved) {
       try {
         setWishlist(JSON.parse(saved));
       } catch (e) {
         console.error('Failed to parse wishlist', e);
+      }
+    }
+    if (savedNotified) {
+      try {
+        setLastNotified(JSON.parse(savedNotified));
+      } catch (e) {
+        console.error('Failed to parse lastNotified', e);
       }
     }
     setIsLoaded(true);
@@ -45,6 +54,13 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem('dj-tools-wishlist', JSON.stringify(wishlist));
     }
   }, [wishlist, isLoaded]);
+
+  // Save lastNotified to localStorage
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem('dj-tools-last-notified', JSON.stringify(lastNotified));
+    }
+  }, [lastNotified, isLoaded]);
 
   const addToWishlist = useCallback((product: Product) => {
     setWishlist((prev) => {
@@ -75,12 +91,36 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     wishlist.forEach((item) => {
       const product = MOCK_PRODUCTS.find((p) => p.id === item.productId);
       if (product && product.currentPrice < item.savedPrice) {
+        // Check if we already notified for this price or lower
+        const lastPrice = lastNotified[item.productId];
+        if (lastPrice && lastPrice <= product.currentPrice) {
+          return;
+        }
+
         const drop = item.savedPrice - product.currentPrice;
         const percent = Math.round((drop / item.savedPrice) * 100);
         addAlert(`Price drop! ${product.name} is now $${product.currentPrice} (-${percent}%)`, 'success');
+
+        setLastNotified((prev) => ({
+          ...prev,
+          [item.productId]: product.currentPrice,
+        }));
       }
     });
-  }, [wishlist, addAlert]);
+  }, [wishlist, addAlert, lastNotified]);
+
+  // Check for price drops periodically and on load
+  useEffect(() => {
+    if (isLoaded && wishlist.length > 0) {
+      checkPriceDrops();
+
+      const interval = setInterval(() => {
+        checkPriceDrops();
+      }, 60000); // Check every minute
+
+      return () => clearInterval(interval);
+    }
+  }, [isLoaded, wishlist, checkPriceDrops]);
 
   const simulatePriceDrop = useCallback(() => {
     if (wishlist.length === 0) {

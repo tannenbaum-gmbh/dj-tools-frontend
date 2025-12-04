@@ -4,11 +4,13 @@ import { WishlistToggle } from './WishlistToggle';
 
 interface ProductCardProps {
   product: Product;
+  priceDropped?: boolean;
+  dropPercent?: number;
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, priceDropped, dropPercent }: ProductCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow ${priceDropped ? 'ring-2 ring-green-500' : ''}`}>
       <div className="relative h-48 bg-gray-200">
         {/* In a real app, use next/image */}
         <img
@@ -19,6 +21,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="absolute top-2 right-2">
           <WishlistToggle product={product} />
         </div>
+        {priceDropped && dropPercent && (
+          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+            Price Drop -{dropPercent}%
+          </div>
+        )}
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-1">{product.name}</h3>
