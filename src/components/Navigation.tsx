@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { useTheme } from './ThemeProvider'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg">
+    <nav className="bg-gray-900 dark:bg-gray-950 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -44,6 +46,13 @@ export default function Navigation() {
               >
                 About
               </Link>
+              <button
+                onClick={toggleTheme}
+                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {theme === 'light' ? '🌙' : '☀️'}
+              </button>
             </div>
           </div>
 
@@ -100,6 +109,13 @@ export default function Navigation() {
             >
               About
             </Link>
+            <button
+              onClick={toggleTheme}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+            </button>
           </div>
         </div>
       )}
