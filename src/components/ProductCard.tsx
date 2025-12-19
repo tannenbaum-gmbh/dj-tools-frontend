@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Product } from '../lib/mockData';
 import { WishlistToggle } from './WishlistToggle';
 
@@ -12,17 +13,18 @@ export const ProductCard = ({ product, priceDropped, dropPercent }: ProductCardP
   return (
     <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow ${priceDropped ? 'ring-2 ring-green-500' : ''}`}>
       <div className="relative h-48 bg-gray-200">
-        {/* In a real app, use next/image */}
-        <img
+        <Image
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-2 right-2 z-10">
           <WishlistToggle product={product} />
         </div>
         {priceDropped && dropPercent && (
-          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+          <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
             Price Drop -{dropPercent}%
           </div>
         )}
