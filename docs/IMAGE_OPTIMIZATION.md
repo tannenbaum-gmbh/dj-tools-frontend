@@ -11,7 +11,6 @@ This project implements modern image optimization using Next.js's built-in Image
 The Next.js configuration enables:
 - **Next-gen formats**: AVIF and WebP formats are automatically served to supporting browsers
 - **Remote image patterns**: Configured to allow images from external domains (e.g., `placehold.co`)
-- **Security settings**: Added CSP and SVG handling for secure image loading
 
 ```javascript
 images: {
