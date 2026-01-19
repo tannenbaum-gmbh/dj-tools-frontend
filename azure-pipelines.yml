@@ -34,9 +34,9 @@ steps:
       npm run build
     displayName: 'Build application'
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@1
     displayName: 'Publish build artifacts'
     inputs:
-      PathtoPublish: '.next'
-      ArtifactName: 'next-build'
+      targetPath: '.next'
+      artifactName: 'next-build'
     condition: succeeded()
