@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MOCK_PRODUCTS, MOCK_REVIEWS } from '@/lib/mockData';
@@ -24,10 +24,18 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   const endIndex = startIndex + REVIEWS_PER_PAGE;
   const currentReviews = productReviews.slice(startIndex, endIndex);
 
-  // Calculate average rating
-  const averageRating = productReviews.length > 0
-    ? (productReviews.reduce((sum, review) => sum + review.rating, 0) / productReviews.length).toFixed(1)
-    : '0';
+  // Calculate average rating (memoized)
+  const averageRating = useMemo(() => {
+    return productReviews.length > 0
+      ? (productReviews.reduce((sum, review) => sum + review.rating, 0) / productReviews.length).toFixed(1)
+      : '0';
+  }, [productReviews]);
+
+  // Generate page buttons (memoized)
+  const pageButtons = useMemo(() => 
+    Array.from({ length: totalPages }, (_, i) => i + 1),
+    [totalPages]
+  );
 
   const renderStars = (rating: number) => {
     return (
@@ -155,7 +163,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                       Previous
                     </button>
 
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    {pageButtons.map((page) => (
                       <button
                         key={page}
                         onClick={() => setCurrentPage(page)}
