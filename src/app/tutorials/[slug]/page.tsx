@@ -184,13 +184,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 function getLevelColor(level: string) {
   switch (level) {
     case 'Beginner':
-      return 'bg-green-100 text-green-800'
-    case 'Intermediate':
-      return 'bg-yellow-100 text-yellow-800'
-    case 'Advanced':
       return 'bg-red-100 text-red-800'
+    case 'Intermediate':
+      return 'bg-red-200 text-red-900'
+    case 'Advanced':
+      return 'bg-red-300 text-red-900'
     default:
-      return 'bg-gray-100 text-gray-800'
+      return 'bg-red-100 text-red-800'
   }
 }
 
@@ -207,11 +207,11 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-purple-600 hover:text-purple-800">Home</Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/tutorials" className="text-purple-600 hover:text-purple-800">Tutorials</Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">{tutorial.title}</span>
+            <Link href="/" className="text-red-600 hover:text-red-800">Home</Link>
+            <span className="text-red-400">/</span>
+            <Link href="/tutorials" className="text-red-600 hover:text-red-800">Tutorials</Link>
+            <span className="text-red-400">/</span>
+            <span className="text-red-600">{tutorial.title}</span>
           </nav>
         </div>
       </div>
@@ -227,16 +227,16 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
               </span>
             </div>
             
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-red-900 mb-4">
               {tutorial.title}
             </h1>
             
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-red-600 mb-6">
               {tutorial.description}
             </p>
             
-            <div className="flex items-center space-x-6 text-sm text-gray-500">
-              <span className="bg-gray-100 px-3 py-1 rounded">{tutorial.category}</span>
+            <div className="flex items-center space-x-6 text-sm text-red-500">
+              <span className="bg-red-100 px-3 py-1 rounded text-red-700">{tutorial.category}</span>
               <span className="flex items-center">
                 <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -249,20 +249,20 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
           {/* Tutorial Content */}
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
-              <p className="text-gray-700 mb-8">{tutorial.content.introduction}</p>
+              <h2 className="text-2xl font-bold text-red-900 mb-4">Introduction</h2>
+              <p className="text-red-700 mb-8">{tutorial.content.introduction}</p>
 
               {tutorial.content.sections.map((section, index) => (
                 <div key={index} className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  <h3 className="text-xl font-semibold text-red-900 mb-4">
                     {index + 1}. {section.title}
                   </h3>
-                  <p className="text-gray-700 mb-4">{section.content}</p>
+                  <p className="text-red-700 mb-4">{section.content}</p>
                   
                   {section.tips && (
-                    <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-                      <h4 className="font-semibold text-blue-900 mb-2">💡 Pro Tips:</h4>
-                      <ul className="list-disc list-inside text-blue-800 space-y-1">
+                    <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+                      <h4 className="font-semibold text-red-900 mb-2">💡 Pro Tips:</h4>
+                      <ul className="list-disc list-inside text-red-800 space-y-1">
                         {section.tips.map((tip, tipIndex) => (
                           <li key={tipIndex}>{tip}</li>
                         ))}
@@ -272,14 +272,14 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
                 </div>
               ))}
 
-              <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded mb-8">
-                <h3 className="text-xl font-semibold text-green-900 mb-4">🎯 Summary</h3>
-                <p className="text-green-800">{tutorial.content.summary}</p>
+              <div className="bg-red-50 border-l-4 border-red-400 p-6 rounded mb-8">
+                <h3 className="text-xl font-semibold text-red-900 mb-4">🎯 Summary</h3>
+                <p className="text-red-800">{tutorial.content.summary}</p>
               </div>
 
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-6 rounded">
-                <h3 className="text-xl font-semibold text-purple-900 mb-4">🚀 Next Steps</h3>
-                <ul className="list-disc list-inside text-purple-800 space-y-2">
+              <div className="bg-red-100 border-l-4 border-red-500 p-6 rounded">
+                <h3 className="text-xl font-semibold text-red-900 mb-4">🚀 Next Steps</h3>
+                <ul className="list-disc list-inside text-red-800 space-y-2">
                   {tutorial.content.nextSteps.map((step, index) => (
                     <li key={index}>{step}</li>
                   ))}
@@ -292,13 +292,13 @@ export default function TutorialPage({ params }: { params: { slug: string } }) {
           <div className="flex justify-between">
             <Link
               href="/tutorials"
-              className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors"
+              className="bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded-md transition-colors"
             >
               ← Back to Tutorials
             </Link>
             <Link
               href="/tutorials"
-              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
             >
               Explore More Tutorials →
             </Link>

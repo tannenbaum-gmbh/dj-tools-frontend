@@ -97,13 +97,13 @@ const levels = ['All', 'Beginner', 'Intermediate', 'Advanced']
 function getLevelColor(level: string) {
   switch (level) {
     case 'Beginner':
-      return 'bg-green-100 text-green-800'
-    case 'Intermediate':
-      return 'bg-yellow-100 text-yellow-800'
-    case 'Advanced':
       return 'bg-red-100 text-red-800'
+    case 'Intermediate':
+      return 'bg-red-200 text-red-900'
+    case 'Advanced':
+      return 'bg-red-300 text-red-900'
     default:
-      return 'bg-gray-100 text-gray-800'
+      return 'bg-red-100 text-red-800'
   }
 }
 
@@ -111,13 +111,13 @@ export default function TutorialsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-red-100">
               📚 DJ Learning Center
             </h1>
-            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto text-red-200">
               Master the art of DJing with our comprehensive tutorials, guides, and best practices.
               From beginner basics to advanced techniques.
             </p>
@@ -129,44 +129,44 @@ export default function TutorialsPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-            <div className="text-3xl font-bold text-purple-600 mb-2">{tutorials.length}</div>
-            <div className="text-gray-600">Total Tutorials</div>
+            <div className="text-3xl font-bold text-red-600 mb-2">{tutorials.length}</div>
+            <div className="text-red-600">Total Tutorials</div>
           </div>
           <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-            <div className="text-3xl font-bold text-green-600 mb-2">
+            <div className="text-3xl font-bold text-red-500 mb-2">
               {tutorials.filter(t => t.level === 'Beginner').length}
             </div>
-            <div className="text-gray-600">Beginner</div>
-          </div>
-          <div className="bg-white rounded-lg p-6 text-center shadow-sm">
-            <div className="text-3xl font-bold text-yellow-600 mb-2">
-              {tutorials.filter(t => t.level === 'Intermediate').length}
-            </div>
-            <div className="text-gray-600">Intermediate</div>
+            <div className="text-red-600">Beginner</div>
           </div>
           <div className="bg-white rounded-lg p-6 text-center shadow-sm">
             <div className="text-3xl font-bold text-red-600 mb-2">
+              {tutorials.filter(t => t.level === 'Intermediate').length}
+            </div>
+            <div className="text-red-600">Intermediate</div>
+          </div>
+          <div className="bg-white rounded-lg p-6 text-center shadow-sm">
+            <div className="text-3xl font-bold text-red-700 mb-2">
               {tutorials.filter(t => t.level === 'Advanced').length}
             </div>
-            <div className="text-gray-600">Advanced</div>
+            <div className="text-red-600">Advanced</div>
           </div>
         </div>
 
         {/* Filters */}
         <div className="bg-white rounded-lg p-6 mb-8 shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Filter Tutorials</h2>
+          <h2 className="text-lg font-semibold mb-4 text-red-700">Filter Tutorials</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+              <label className="block text-sm font-medium text-red-700 mb-2">Category</label>
+              <select className="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 text-red-700">
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Skill Level</label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+              <label className="block text-sm font-medium text-red-700 mb-2">Skill Level</label>
+              <select className="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 text-red-700">
                 {levels.map(level => (
                   <option key={level} value={level}>{level}</option>
                 ))}
@@ -187,22 +187,22 @@ export default function TutorialsPage() {
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                <h3 className="text-xl font-semibold mb-2 text-red-900">
                   {tutorial.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 text-sm">
+                <p className="text-red-600 mb-4 text-sm">
                   {tutorial.description}
                 </p>
                 
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                  <span className="bg-gray-100 px-2 py-1 rounded">{tutorial.category}</span>
+                <div className="flex items-center justify-between text-sm text-red-500 mb-4">
+                  <span className="bg-red-100 px-2 py-1 rounded text-red-700">{tutorial.category}</span>
                   <span>⏱️ {tutorial.duration}</span>
                 </div>
                 
                 <Link
                   href={`/tutorials/${tutorial.id}`}
-                  className="block w-full bg-purple-600 hover:bg-purple-700 text-white text-center py-2 px-4 rounded-md transition-colors font-medium"
+                  className="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-2 px-4 rounded-md transition-colors font-medium"
                 >
                   Start Tutorial
                 </Link>
@@ -212,27 +212,27 @@ export default function TutorialsPage() {
         </div>
 
         {/* Learning Path Section */}
-        <div className="mt-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-8 text-white">
+        <div className="mt-16 bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-8 text-white">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">🎯 Recommended Learning Path</h2>
-            <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-red-100">🎯 Recommended Learning Path</h2>
+            <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto text-red-200">
               New to DJing? Follow our structured learning path designed to take you from beginner to advanced DJ.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <div className="text-2xl mb-2">1️⃣</div>
-                <h3 className="font-semibold">Foundation</h3>
-                <p className="text-sm opacity-80">Basic equipment & mixing</p>
+                <h3 className="font-semibold text-red-100">Foundation</h3>
+                <p className="text-sm opacity-80 text-red-200">Basic equipment & mixing</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <div className="text-2xl mb-2">2️⃣</div>
-                <h3 className="font-semibold">Technique</h3>
-                <p className="text-sm opacity-80">EQ, filters & transitions</p>
+                <h3 className="font-semibold text-red-100">Technique</h3>
+                <p className="text-sm opacity-80 text-red-200">EQ, filters & transitions</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <div className="text-2xl mb-2">3️⃣</div>
-                <h3 className="font-semibold">Mastery</h3>
-                <p className="text-sm opacity-80">Advanced skills & performance</p>
+                <h3 className="font-semibold text-red-100">Mastery</h3>
+                <p className="text-sm opacity-80 text-red-200">Advanced skills & performance</p>
               </div>
             </div>
           </div>

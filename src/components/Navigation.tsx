@@ -7,12 +7,12 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg">
+    <nav className="bg-red-900 text-red-100 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-purple-400">
+            <Link href="/" className="text-xl font-bold text-red-400">
               🎛️ DJ Tools
             </Link>
           </div>
@@ -22,25 +22,25 @@ export default function Navigation() {
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
                 href="/"
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-md text-sm font-medium text-red-200 hover:bg-red-700 transition-colors"
               >
                 Home
               </Link>
               <Link
                 href="/tutorials"
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-md text-sm font-medium text-red-200 hover:bg-red-700 transition-colors"
               >
                 Tutorials
               </Link>
               <Link
                 href="/products"
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-md text-sm font-medium text-red-200 hover:bg-red-700 transition-colors"
               >
                 Products
               </Link>
               <Link
                 href="/about"
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+                className="px-3 py-2 rounded-md text-sm font-medium text-red-200 hover:bg-red-700 transition-colors"
               >
                 About
               </Link>
@@ -51,7 +51,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-red-400 hover:text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
             >
               <span className="sr-only">Open main menu</span>
               {!isMenuOpen ? (
@@ -74,28 +74,28 @@ export default function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               href="/"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              className="block px-3 py-2 rounded-md text-base font-medium text-red-200 hover:bg-red-700 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/tutorials"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              className="block px-3 py-2 rounded-md text-base font-medium text-red-200 hover:bg-red-700 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Tutorials
             </Link>
             <Link
               href="/products"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              className="block px-3 py-2 rounded-md text-base font-medium text-red-200 hover:bg-red-700 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Products
             </Link>
             <Link
               href="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              className="block px-3 py-2 rounded-md text-base font-medium text-red-200 hover:bg-red-700 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               About
