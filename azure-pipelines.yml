@@ -1,3 +1,4 @@
+# Simple CI pipeline: install deps, lint, and build on push/PR.
 trigger:
   branches:
     include:
