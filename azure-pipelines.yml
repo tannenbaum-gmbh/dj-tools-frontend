@@ -1,14 +1,15 @@
-# Azure Pipeline for CI
-# This pipeline runs on every push and pull request to ensure code quality
-
 trigger:
-  - main
-  - develop
-  - feature/*
+  branches:
+    include:
+      - main
+      - develop
+      - feature/*
 
 pr:
-  - main
-  - develop
+  branches:
+    include:
+      - main
+      - develop
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -33,10 +34,3 @@ steps:
   - script: |
       npm run build
     displayName: 'Build application'
-
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish build artifacts'
-    inputs:
-      targetPath: '.next'
-      artifactName: 'next-build'
-    condition: succeeded()
