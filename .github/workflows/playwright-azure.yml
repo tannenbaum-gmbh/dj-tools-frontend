@@ -35,6 +35,21 @@ jobs:
       - name: Install Playwright browsers (fallback for local runs)
         run: npx playwright install --with-deps chromium
 
+      # Build the Next.js app and start it in the background so that tests can
+      # run against http://localhost:3000 when PLAYWRIGHT_BASE_URL is not set.
+      # If PLAYWRIGHT_BASE_URL points to an external deployment, this local
+      # server is simply unused.
+      - name: Build app
+        run: npm run build
+
+      - name: Start app
+        run: npm run start &
+        env:
+          PORT: 3000
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
       # Authenticate to Azure using OIDC (workload identity federation).
       # No client secrets are stored – GitHub exchanges its OIDC token for a
       # short-lived Azure access token at runtime.
