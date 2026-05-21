@@ -58,9 +58,13 @@ export default function EquipmentCalculatorPage() {
         }
 
         const numericValue = Number(value)
+        const fallbackValue = field === 'quantity' ? 1 : 0
         return {
           ...item,
-          [field]: Number.isFinite(numericValue) && numericValue >= 0 ? numericValue : 0,
+          [field]:
+            Number.isFinite(numericValue) && numericValue >= fallbackValue
+              ? numericValue
+              : fallbackValue,
         }
       }),
     )
@@ -115,7 +119,7 @@ export default function EquipmentCalculatorPage() {
                       <td className="px-4 py-3">
                         <input
                           type="number"
-                          min={0}
+                          min={1}
                           value={item.quantity}
                           onChange={(event) => updateItem(item.id, 'quantity', event.target.value)}
                           className="w-24 rounded border border-gray-300 px-3 py-2 text-sm"
@@ -163,9 +167,9 @@ export default function EquipmentCalculatorPage() {
                       </td>
                       <td className="px-4 py-3">
                         {items.length === 1 ? (
-                          <p id={`remove-item-help-${item.id}`} className="sr-only">
+                          <span id={`remove-item-help-${item.id}`} className="sr-only">
                             Cannot remove the last equipment item.
-                          </p>
+                          </span>
                         ) : null}
                         <button
                           type="button"
