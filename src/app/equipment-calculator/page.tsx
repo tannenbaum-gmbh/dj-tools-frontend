@@ -162,10 +162,21 @@ export default function EquipmentCalculatorPage() {
                         />
                       </td>
                       <td className="px-4 py-3">
+                        {items.length === 1 ? (
+                          <p id={`remove-item-help-${item.id}`} className="sr-only">
+                            Cannot remove the last equipment item.
+                          </p>
+                        ) : null}
                         <button
                           type="button"
                           onClick={() => removeItem(item.id)}
                           disabled={items.length === 1}
+                          aria-describedby={items.length === 1 ? `remove-item-help-${item.id}` : undefined}
+                          aria-label={
+                            items.length === 1
+                              ? 'Cannot remove the last equipment item'
+                              : `Remove ${item.name || 'equipment item'}`
+                          }
                           className="text-sm text-red-600 hover:text-red-700 disabled:text-gray-400"
                         >
                           Remove
