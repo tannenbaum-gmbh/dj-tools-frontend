@@ -23,13 +23,14 @@ const createEquipmentItem = (id: number): EquipmentItem => ({
 })
 
 const MAX_SAFE_VALUE = Number.MAX_SAFE_INTEGER
+const DEFAULT_EQUIPMENT_ITEMS: EquipmentItem[] = [
+  { id: 1, name: 'CDJ', quantity: 2, weightKg: 4.3, lengthCm: 32, widthCm: 41, heightCm: 11 },
+  { id: 2, name: 'Mixer', quantity: 1, weightKg: 3.6, lengthCm: 33, widthCm: 41, heightCm: 11 },
+]
 
 export default function EquipmentCalculatorPage() {
   const [nextId, setNextId] = useState(3)
-  const [items, setItems] = useState<EquipmentItem[]>([
-    { id: 1, name: 'CDJ', quantity: 2, weightKg: 4.3, lengthCm: 32, widthCm: 41, heightCm: 11 },
-    { id: 2, name: 'Mixer', quantity: 1, weightKg: 3.6, lengthCm: 33, widthCm: 41, heightCm: 11 },
-  ])
+  const [items, setItems] = useState<EquipmentItem[]>(DEFAULT_EQUIPMENT_ITEMS)
 
   const totalWeightKg = useMemo(
     () =>
@@ -189,11 +190,9 @@ export default function EquipmentCalculatorPage() {
                         />
                       </td>
                       <td className="px-4 py-3">
-                        {items.length === 1 ? (
-                          <span id={`remove-item-help-${item.id}`} className="sr-only">
-                            Cannot remove the last equipment item.
-                          </span>
-                        ) : null}
+                        <span id={`remove-item-help-${item.id}`} className="sr-only">
+                          {items.length === 1 ? 'Cannot remove the last equipment item.' : ''}
+                        </span>
                         <button
                           type="button"
                           onClick={() => removeItem(item.id)}
