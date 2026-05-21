@@ -22,6 +22,8 @@ const createEquipmentItem = (id: number): EquipmentItem => ({
   heightCm: 0,
 })
 
+const MAX_SAFE_VALUE = Number.MAX_SAFE_INTEGER
+
 export default function EquipmentCalculatorPage() {
   const [nextId, setNextId] = useState(3)
   const [items, setItems] = useState<EquipmentItem[]>([
@@ -30,17 +32,26 @@ export default function EquipmentCalculatorPage() {
   ])
 
   const totalWeightKg = useMemo(
-    () => items.reduce((total, item) => total + item.quantity * item.weightKg, 0),
+    () =>
+      items.reduce((total, item) => {
+        const itemWeight = item.quantity * item.weightKg
+        const safeItemWeight = Number.isFinite(itemWeight)
+          ? Math.min(itemWeight, MAX_SAFE_VALUE)
+          : MAX_SAFE_VALUE
+        return Math.min(total + safeItemWeight, MAX_SAFE_VALUE)
+      }, 0),
     [items],
   )
 
   const totalVolumeCm3 = useMemo(
     () =>
-      items.reduce(
-        (total, item) =>
-          total + item.quantity * item.lengthCm * item.widthCm * item.heightCm,
-        0,
-      ),
+      items.reduce((total, item) => {
+        const itemVolume = item.quantity * item.lengthCm * item.widthCm * item.heightCm
+        const safeItemVolume = Number.isFinite(itemVolume)
+          ? Math.min(itemVolume, MAX_SAFE_VALUE)
+          : MAX_SAFE_VALUE
+        return Math.min(total + safeItemVolume, MAX_SAFE_VALUE)
+      }, 0),
     [items],
   )
 
@@ -58,13 +69,24 @@ export default function EquipmentCalculatorPage() {
         }
 
         const numericValue = Number(value)
-        const fallbackValue = field === 'quantity' ? 1 : 0
+
+        if (field === 'quantity') {
+          const quantityValue = Math.floor(numericValue)
+          return {
+            ...item,
+            quantity:
+              Number.isFinite(quantityValue) && quantityValue >= 1
+                ? Math.min(quantityValue, MAX_SAFE_VALUE)
+                : 1,
+          }
+        }
+
         return {
           ...item,
           [field]:
-            Number.isFinite(numericValue) && numericValue >= fallbackValue
-              ? numericValue
-              : fallbackValue,
+            Number.isFinite(numericValue) && numericValue >= 0
+              ? Math.min(numericValue, MAX_SAFE_VALUE)
+              : 0,
         }
       }),
     )
@@ -120,6 +142,7 @@ export default function EquipmentCalculatorPage() {
                         <input
                           type="number"
                           min={1}
+                          step={1}
                           value={item.quantity}
                           onChange={(event) => updateItem(item.id, 'quantity', event.target.value)}
                           className="w-24 rounded border border-gray-300 px-3 py-2 text-sm"
