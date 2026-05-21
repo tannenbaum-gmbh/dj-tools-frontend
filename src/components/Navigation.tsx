@@ -33,6 +33,12 @@ export default function Navigation() {
                 Tutorials
               </Link>
               <Link
+                href="/equipment-calculator"
+                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
+              >
+                Calculator
+              </Link>
+              <Link
                 href="/products"
                 className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
               >
@@ -85,6 +91,13 @@ export default function Navigation() {
               onClick={() => setIsMenuOpen(false)}
             >
               Tutorials
+            </Link>
+            <Link
+              href="/equipment-calculator"
+              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Calculator
             </Link>
             <Link
               href="/products"
