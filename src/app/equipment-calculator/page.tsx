@@ -135,6 +135,7 @@ export default function EquipmentCalculatorPage() {
                           type="text"
                           value={item.name}
                           onChange={(event) => updateItem(item.id, 'name', event.target.value)}
+                          aria-label={`Equipment name for row ${item.id}`}
                           className="w-full rounded border border-gray-300 px-3 py-2 text-sm"
                           placeholder="e.g. Controller"
                         />
@@ -146,6 +147,7 @@ export default function EquipmentCalculatorPage() {
                           step={1}
                           value={item.quantity}
                           onChange={(event) => updateItem(item.id, 'quantity', event.target.value)}
+                          aria-label={`Quantity for ${item.name || `equipment row ${item.id}`}`}
                           className="w-24 rounded border border-gray-300 px-3 py-2 text-sm"
                         />
                       </td>
@@ -156,6 +158,7 @@ export default function EquipmentCalculatorPage() {
                           step="0.1"
                           value={item.weightKg}
                           onChange={(event) => updateItem(item.id, 'weightKg', event.target.value)}
+                          aria-label={`Weight in kilograms for ${item.name || `equipment row ${item.id}`}`}
                           className="w-28 rounded border border-gray-300 px-3 py-2 text-sm"
                         />
                       </td>
@@ -166,6 +169,7 @@ export default function EquipmentCalculatorPage() {
                           step="0.1"
                           value={item.lengthCm}
                           onChange={(event) => updateItem(item.id, 'lengthCm', event.target.value)}
+                          aria-label={`Length in centimeters for ${item.name || `equipment row ${item.id}`}`}
                           className="w-28 rounded border border-gray-300 px-3 py-2 text-sm"
                         />
                       </td>
@@ -176,6 +180,7 @@ export default function EquipmentCalculatorPage() {
                           step="0.1"
                           value={item.widthCm}
                           onChange={(event) => updateItem(item.id, 'widthCm', event.target.value)}
+                          aria-label={`Width in centimeters for ${item.name || `equipment row ${item.id}`}`}
                           className="w-28 rounded border border-gray-300 px-3 py-2 text-sm"
                         />
                       </td>
@@ -186,6 +191,7 @@ export default function EquipmentCalculatorPage() {
                           step="0.1"
                           value={item.heightCm}
                           onChange={(event) => updateItem(item.id, 'heightCm', event.target.value)}
+                          aria-label={`Height in centimeters for ${item.name || `equipment row ${item.id}`}`}
                           className="w-28 rounded border border-gray-300 px-3 py-2 text-sm"
                         />
                       </td>
