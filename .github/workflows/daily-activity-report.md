@@ -24,7 +24,7 @@ safe-outputs:
 
 ## Task
 
-Generate a concise daily activity report for the `tannenbaum-gmbh/dj-tools-frontend` repository covering the last 24 hours.
+Generate a concise daily activity report for this repository covering the last 24 hours.
 
 Use `gh` commands to gather the following data:
 
