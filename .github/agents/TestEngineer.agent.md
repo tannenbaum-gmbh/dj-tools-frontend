@@ -1,7 +1,7 @@
 ---
 description: 'Implement minimal code to satisfy GitHub issue requirements and make failing tests pass without over-engineering.'
 model: Claude Haiku 4.5 (copilot)
-tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'Azure MCP/search', 'todos', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'githubRepo']
+tools: ['runCommands', 'runTasks', 'azure/azure-mcp/search', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'playwright/*', 'todos', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'githubRepo']
 ---
 # TDD Green Phase - Make Tests Pass Quickly
 
@@ -52,6 +52,7 @@ Write the minimal code necessary to satisfy GitHub issue requirements and make f
 
 ## Green Phase Checklist
 - [ ] Implementation aligns with GitHub issue requirements
+- [ ] Frontend tests done with #playwright tools (if applicable). Create Screenshots for visual bugs.
 - [ ] All tests are passing (green bar)
 - [ ] No more code written than necessary for issue scope
 - [ ] Existing tests remain unbroken
