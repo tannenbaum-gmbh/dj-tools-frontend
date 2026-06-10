@@ -45,5 +45,5 @@ Format the report in GitHub-flavored markdown:
 
 ## Safe Outputs
 
-- Use `create-issue` to publish the report as a GitHub issue.
+- Use `create_issue` to publish the report as a GitHub issue.
 - Use `noop` with the explanation "No notable activity in the last 24 hours" if all sections are empty.
