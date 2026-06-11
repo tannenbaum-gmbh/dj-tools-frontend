@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎛️ DJ Tools Frontend
+
+A Next.js web application for DJ equipment, tutorials, and wishlist price tracking. Built with Next.js 14, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **Product Catalog** – Browse DJ equipment (controllers, monitors, headphones, synthesizers) with current and original pricing.
+- **Learning Center** – 8 tutorials spanning Beginner, Intermediate, and Advanced levels across categories such as Fundamentals, Mixing Techniques, Turntablism, Performance, Software, and Production. Each tutorial has its own detail page.
+- **Wishlist & Price Alerts** – Add products to a persistent wishlist (stored in `localStorage`). The app checks for price drops every minute and surfaces toast notifications when a tracked product's price falls below its saved price. A "Simulate Price Drop" button is available for testing.
+- **Responsive Navigation** – Top navigation bar with mobile hamburger menu linking to Home, Tutorials, Products, and About pages.
+- **Alert System** – Global toast notifications (success / info / warning) powered by `AlertContext`.
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx              # Root layout with Navigation and Providers
+│   ├── page.tsx                # Home page (hero, features grid, featured products)
+│   ├── tutorials/
+│   │   ├── page.tsx            # Tutorial listing with filters and learning path
+│   │   └── [slug]/page.tsx     # Individual tutorial detail page
+│   └── wishlist/
+│       └── page.tsx            # Wishlist page with price-drop simulation
+├── components/
+│   ├── AlertToast.tsx          # Toast notification UI
+│   ├── Navigation.tsx          # Responsive top navigation bar
+│   ├── ProductCard.tsx         # Product card with wishlist toggle and price-drop badge
+│   ├── Providers.tsx           # Wraps app with AlertProvider and WishlistProvider
+│   └── WishlistToggle.tsx      # Heart icon button to add/remove products from wishlist
+├── context/
+│   ├── AlertContext.tsx        # Global alert/toast state
+│   └── WishlistContext.tsx     # Wishlist state, localStorage persistence, price-drop checks
+└── lib/
+    └── mockData.ts             # Mock product catalogue (Product interface + MOCK_PRODUCTS)
+```
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other available scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # Production build
+npm run lint    # ESLint
+npm start       # Start production server
+```
 
-## Learn More
+## GitHub Workflows
 
-To learn more about Next.js, take a look at the following resources:
+### Daily Activity Report
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The repository includes an agentic daily activity report workflow (`.github/workflows/daily-activity-report.md`). It runs on a schedule (daily around 07:00) and publishes a summary of the last 24 hours of repository activity as a GitHub issue, covering:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Merged pull requests
+- Newly opened and closed issues
+- Recent commits on the default branch
+- Open PR and issue counts
 
-## Deploy on Vercel
+Issues are labelled `activity-report`, automatically close older reports, and expire after 7 days.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js 14](https://nextjs.org) (App Router)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Geist](https://vercel.com/font) font family
